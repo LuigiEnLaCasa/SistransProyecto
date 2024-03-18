@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
@@ -21,12 +22,15 @@ public class Empleado {
     private Usuario usuario;
 
     private String tipo;
-    private Oficina oficina;
+
+    @OneToOne
+    @JoinColumn(name="id_oficina",referencedColumnName = "id")
+    private Oficina id_oficina;
     
     public Empleado(){;}
-    public Empleado(String tipo, Oficina oficina) {
+    public Empleado(String tipo) {
         this.tipo = tipo;
-        this.oficina = oficina;
+        
     }
 
     public Integer getId() {
@@ -53,12 +57,12 @@ public class Empleado {
         this.tipo = tipo;
     }
 
-    public Oficina getOficina() {
-        return oficina;
+    public Oficina getId_oficina() {
+        return id_oficina;
     }
 
-    public void setOficina(Oficina oficina) {
-        this.oficina = oficina;
+    public void setId_oficina(Oficina id_oficina) {
+        this.id_oficina = id_oficina;
     }
 
     

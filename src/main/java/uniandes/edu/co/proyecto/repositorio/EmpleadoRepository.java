@@ -15,7 +15,7 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer>{
         @Modifying
         @Transactional
         @Query(value = "INSERT INTO empleados (login, tipo, oficina) VALUES ( bancAndes_seq.nextval , :login,:tipo, :oficina)", nativeQuery = true)
-        void insertarEmpleado(@Param("login") String login, @Param("tipo") String tipo, @Param("oficina") String oficina);
+        void insertarEmpleado(@Param("login") String login, @Param("tipo") String tipo, @Param("oficina") Integer oficina);
 
 
        
