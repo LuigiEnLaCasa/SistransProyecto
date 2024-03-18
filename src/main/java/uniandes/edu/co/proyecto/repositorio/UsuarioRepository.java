@@ -18,7 +18,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
         @Transactional
         @Query(value = "INSERT INTO usuarios (login, clave, documento_identidad, tipo_documento, nombre, nacionalidad, direccion_electronica, telefono) VALUES ( bancAndes_seq.nextval , :login,:clave, :documento_identidad,:tipo_documento,:nombre, :nacionalidad, :direccion_electronica, :telefono)", nativeQuery = true)
         void insertarUsuario(@Param("login") String login,@Param("clave") String clave, @Param("documento_identidad") String documento_identidad, @Param("tipo_documento") String tipo_documento, @Param("nombre") String nombre,
-        @Param("nacionalidad") String nacionalidad, @Param("telefono") Integer telefono, @Param("direccion_electronica") String direccion_electronica);
+        @Param("nacionalidad") String nacionalidad, @Param("telefono") String telefono, @Param("direccion_electronica") String direccion_electronica);
 
        
 }
