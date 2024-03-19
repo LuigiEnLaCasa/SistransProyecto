@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direcciones Usuarios</title>
+</head>
+<body>
+    <div>
+        <h1>Direcciones Usuarios</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Direccion</th>
+                    <th>Ciudad</th>
+                    <th>Departamento</th>
+                    <th>Login Usuario</th>
+                    
+                    
+                </tr>
+            </thead>
+            <th:block th:each="direccionUario : ${direccionUsuario}">
+                <tr>
+                    <td th:text="${direccionUsuario.direccion}"></td>
+                    <td th:text="${direccionUsuario.ciudad}"></td>
+                    <td th:text="${direccionUsuario.departamento}"></td>
+                    <td th:text="${direccionUsuario.id_usuario}"></td>
+                    
+
+                    
+                    
+                    <td>
+                        <a th:href="@{direccionesUsuarios/{id}/edit(id=${direccionUsuario.id})}">Editar</a>
+                        <a th:href="@{direccionesUsuarios/{id}/delete(id=${direccionUsuario.id})}"
+                            onclick="return confirm('¿Estás seguro de borrar esta direccion de usuario?')">Borrar</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    <div>
+        <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>
+    </div>
+
+    </div>
+</body>
+</html>
