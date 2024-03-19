@@ -20,4 +20,17 @@ public interface PrestamoRepository extends JpaRepository<Prestamo, Integer>{
         void insertarPrestamo(@Param("id_Prestamo") Integer id_Prestamo, @Param("tipo") String tipo, @Param("valor_total") Integer valor_total, @Param("saldo_pendiente") Integer saldo_pendiente, @Param("cuotas") Integer cuotas, @Param("cuotas_pendientes") Integer cuotas_pendientes, @Param("valor_cuota") Integer valor_cuota, @Param("dia_corte") Integer dia_corte, @Param("interes") Integer interes);
 
      
+        @Modifying
+        @Transactional
+        @Query(value = "SELECT prestamo.cuenta"  + //
+        "FROM prestamos where usuarios.login = prestamo.login", nativeQuery = true)
+        Prestamo darInformacionPrestamo(@Param("login") String login);
+
+
+        @Modifying
+        @Transactional
+        @Query(value = "DELETE prestamo from prestamos where usuario.login = prestamo.usuario_login",nativeQuery  = true)
+        void eliminarPrestamo(@Param("id") Integer id);
+
+
 }

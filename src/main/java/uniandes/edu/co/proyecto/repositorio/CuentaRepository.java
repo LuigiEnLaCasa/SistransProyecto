@@ -20,4 +20,11 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Integer>{
         void insertarCuenta(@Param("id_Cuenta") Integer id_Cuenta, @Param("tipo") String tipo, @Param("saldo") Integer saldo, @Param("estado") String estado);
 
      
+        @Modifying
+        @Transactional
+        @Query(value = "SELECT usuario.cuenta"  + //
+        "FROM cuentas where usuarios.login = cuentas.login", nativeQuery = true)
+        Cuenta darInformacionCuenta(@Param("login") String login);
+
+
 }

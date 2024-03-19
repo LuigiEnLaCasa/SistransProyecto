@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
@@ -22,7 +23,7 @@ public class CuentaController {
    @GetMapping("/cuentas/new")
     public String cuentaForm(Model model) {
         model.addAttribute("cuenta", new Cuenta());
-        return "cuentadNueva";
+        return "cuentaNueva";
     }
 
     @PostMapping("/cuentas/new/save")
@@ -31,7 +32,20 @@ public class CuentaController {
         return "redirect:/cuentas";
     }
    
-  
+    @GetMapping("/cuentas/{login}/edit")
+    public String clienteEditarForm(@PathVariable("login") String login, Model model) {
+        Cuenta cuenta = cuentaRepository.darInformacionCuenta(login);
+        if (cuenta != null) {
+            model.addAttribute("cliente", cuenta);
+            return "cuentaEditar";
+        } else {
+            return "redirect:/clientes";
+        }
+    }
+
+
+
+
 
 
 }
