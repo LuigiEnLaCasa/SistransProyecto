@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntos de Atencion</title>
+</head>
+<body>
+    <div>
+        <h1>Lista de Puntos de Atencion</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    
+                    
+                </tr>
+            </thead>
+            <th:block th:each="puntoDeAtencion : ${puntosDeAtencion}">
+                <tr>
+                    <td th:text="${puntoDeAtencion.id}"></td>
+                    
+                    
+                    <td>
+                        <a th:href="@{puntosDeAtencion/{id}/edit(id=${puntoDeAtencion.id})}">Editar</a>
+                        <a th:href="@{puntosDeAtencion/{id}/delete(id=${puntoDeAtencion.id})}"
+                            onclick="return confirm('¿Estás seguro de borrar este punto de atencion?')">Borrar</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    <div>
+        <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>
+    </div>
+
+    </div>
+</body>
+</html>

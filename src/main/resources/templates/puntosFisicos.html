@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntos Fisicos</title>
+</head>
+<body>
+    <div>
+        <h1>Lista de Puntos Fisicos</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo</th>
+                    <th>Id Oficina</th>
+                    
+                </tr>
+            </thead>
+            <th:block th:each="puntoFisico : ${puntosFisicos}">
+                <tr>
+                    <td th:text="${puntoFisico.id}"></td>
+                    <td th:text="${puntoFisico.tipo}"></td>
+                    <td th:text="${puntoFisico.oficina}"></td>
+
+                    
+                    
+                    <td>
+                        <a th:href="@{puntosFisicos/{id}/edit(id=${puntoFisico.id})}">Editar</a>
+                        <a th:href="@{puntosFisicos/{id}/delete(id=${puntoFisico.id})}"
+                            onclick="return confirm('¿Estás seguro de borrar este punto fisico?')">Borrar</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    <div>
+        <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>
+    </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direcciones Fisicas</title>
+</head>
+<body>
+    <div>
+        <h1>Direcciones Fisicas</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Direccion</th>
+                    <th>Ciudad</th>
+                    <th>Departamento</th>
+                    <th>Codigo Postal</th>
+                    
+                    
+                </tr>
+            </thead>
+            <th:block th:each="direccionFisica : ${direccionesFisicas}">
+                <tr>
+                    <td th:text="${direccionFisica.direccion}"></td>
+                    <td th:text="${direccionFisica.ciudad}"></td>
+                    <td th:text="${direccionFisica.departamento}"></td>
+                    <td th:text="${direccionFisica.codigoPostal}"></td>
+                    
+
+                    
+                    
+                    <td>
+                        <a th:href="@{direccionesFisicas/{id}/edit(id=${direccionFisica.id})}">Editar</a>
+                        <a th:href="@{direccionesFisicas/{id}/delete(id=${direccionFisica.id})}"
+                            onclick="return confirm('¿Estás seguro de borrar esta direccion fisica?')">Borrar</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    <div>
+        <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>
+    </div>
+
+    </div>
+</body>
+</html>
